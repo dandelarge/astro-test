@@ -1,0 +1,24 @@
+---
+import Layout from "./Layout.astro";
+import { posts } from "../pages/posts";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title="Blog">
+  <div class="flex">
+    <div class="w-60 border-r border-r-slate pt-8">
+      <ul>
+        {posts.map(({slug, title}) =>(
+          <li>
+            <a href={`/posts/${slug}`}>{title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="flex-grow p-8 prose prose-invert prose-slate">
+      <h1>{frontmatter.title}</h1>
+      <slot />
+    </div>
+  </div>
+</Layout>

@@ -2,7 +2,31 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			typography: (theme) => ({
+				DEFAULT: {
+					css: {
+						h1: {
+							fontFamily: theme('fontFamily.mono'),
+						},
+						h2: {
+							fontFamily: theme('fontFamily.mono'),
+						},
+						h3: {
+							fontFamily: theme('fontFamily.mono'),
+						},
+						h4: {
+							fontFamily: theme('fontFamily.mono'),
+						},
+						h5: {
+							fontFamily: theme('fontFamily.mono'),
+						},
+					},
+				},
+			})
+		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography'),
+	],
 }

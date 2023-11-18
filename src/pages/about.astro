@@ -1,9 +1,65 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import H1 from "../components/H1.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="About Page">
   <H1>About</H1>
+  <main class="flex flex-col gap-4">
+    <div class="flex flex-col md:flex-row gap-6">
+        <Card title="One Title here">
+          <p>Some content here</p>
+        </Card>
+        <Card title="One Title here">
+          <p>Some content here</p>
+        </Card>
+        <Card title="One Title here">
+          <p>Some content here that has a lot of text and it's hard to put in the same place becaus it's going to be a problem </p>
+        </Card>
+    </div>
+    <div id="collapsible-section">
+      <div class="flex flex-col md:flex-row gap-6">
+       <Card title="One Title here">
+          <p>Some content here</p>
+        </Card>
+        <Card title="One Title here">
+          <p>Some content here.</p>
+          <p>with more paragraphs hehe</p>
+        </Card>
+        <Card title="One Title here">
+          <p>Some content here that has a lot of text and it's hard to put in the same place becaus it's going to be a problem </p>
+        </Card>
+      </div>
+    </div>
+    <button class="hover:underline m-8" id="showMore">show more</button>
+  </main>
 </Layout>
+
+<style>
+  #collapsible-section {
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+  }
+
+  #collapsible-section.show {
+    max-height: 1000px;
+  }
+</style>
+
+<script>
+  const showMore = document.getElementById("showMore") as HTMLButtonElement;
+  const collapsibleSection = document.getElementById("collapsible-section") as HTMLDivElement;
+
+  showMore.addEventListener("click", function() {
+    collapsibleSection.classList.toggle("show");
+
+    if (collapsibleSection.classList.contains("show")) {
+      showMore.innerText = "show less"
+      return;
+    } else {
+      showMore.innerText = "show more"
+    }
+  });
+</script>
